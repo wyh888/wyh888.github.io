@@ -146,13 +146,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -161,6 +154,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -217,7 +217,7 @@
                 post-container">
 
                 <h3><span id="http-server">http-server</span></h3>
-<p>http-server是基于node.js的一个简单、零配置的命令行web服务器，用来做静态服务器非常方便。</p>
+<p>http-server 是基于 node.js 的一个简单、零配置的命令行web服务器，用来做静态服务器非常方便。</p>
 <p>相关介绍可参考：<a href="https://blog.csdn.net/ithanmang/article/details/88375259" target="_blank" rel="noopener">https://blog.csdn.net/ithanmang/article/details/88375259</a></p>
 <p>常规使用方法是在根目录下运行命令：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server &lt;path&gt; -<span class="selector-tag">a</span> <span class="number">127.0</span>.<span class="number">0.1</span> -<span class="selector-tag">p</span> &lt;端口号&gt;</span><br></pre></td></tr></table></figure>
@@ -265,23 +265,7 @@
                 <!-- disqus comment end -->
 
                 <!-- gitment start -->
-                <!-- Comment -->
-<div id="git"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-        id: 'Wed Jul 10 2019 23:07:07 GMT+0800', // 可选。默认为 location.href
-        owner: 'wyh888',
-        repo: 'blog-comment',
-        oauth: {
-            client_id: '202f7c254dc47aead897',
-            client_secret: '7dfb1b196fd136254d562f336d17abaf2dfda6ed',
-        },
-    })
-    gitment.render('git')
-</script>
-
+                <!--  partial('_partial/comment') -->
                 <!-- gitment end -->
             </div>
             
@@ -420,7 +404,7 @@
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; YuHo Wang 2019 
+                    Copyright &copy; YuHo Wang 2020 
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">

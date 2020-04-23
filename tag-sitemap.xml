@@ -3,15 +3,36 @@
 
 
     <url>
-        <loc>https://wyh888.github.io/tags/CSS/</loc>
-        <lastmod>2019-09-01T14:00:54.331Z</lastmod>
+        <loc>https://wyh888.github.io/tags/pm2/</loc>
+        <lastmod>2020-04-23T10:35:59.198Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://wyh888.github.io/tags/Node/</loc>
+        <lastmod>2020-04-23T10:35:59.198Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://wyh888.github.io/tags/Typescript/</loc>
+        <lastmod>2019-10-31T07:23:24.177Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://wyh888.github.io/tags/React/</loc>
-        <lastmod>2019-09-01T14:00:37.336Z</lastmod>
+        <lastmod>2019-10-31T07:23:24.177Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://wyh888.github.io/tags/CSS/</loc>
+        <lastmod>2019-09-01T14:00:54.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -33,20 +54,6 @@
     <url>
         <loc>https://wyh888.github.io/tags/JavaScript/</loc>
         <lastmod>2019-09-01T13:20:04.938Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://wyh888.github.io/tags/pm2/</loc>
-        <lastmod>2019-09-01T13:19:55.151Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://wyh888.github.io/tags/Node/</loc>
-        <lastmod>2019-09-01T13:19:55.151Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

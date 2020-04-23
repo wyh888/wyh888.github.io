@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -247,6 +247,10 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/2019/10/27/在-react-typescript-项目中使用没有-types-定义的-npm-包/" data-toggle="tooltip" data-placement="top" title="在 react+typescript 项目中使用没有 @types 定义的 npm 包">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
                             <a href="/2019/08/12/扩展-create-react-app-项目中的-webpack-配置/" data-toggle="tooltip" data-placement="top" title="扩展 create-react-app 项目中的 webpack 配置">Next Post &rarr;</a>
@@ -267,23 +271,7 @@
                 <!-- disqus comment end -->
 
                 <!-- gitment start -->
-                <!-- Comment -->
-<div id="git"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-        id: 'Thu Oct 03 2019 11:22:13 GMT+0800', // 可选。默认为 location.href
-        owner: 'wyh888',
-        repo: 'blog-comment',
-        oauth: {
-            client_id: '202f7c254dc47aead897',
-            client_secret: '7dfb1b196fd136254d562f336d17abaf2dfda6ed',
-        },
-    })
-    gitment.render('git')
-</script>
-
+                <!--  partial('_partial/comment') -->
                 <!-- gitment end -->
             </div>
             
@@ -418,7 +406,7 @@
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; YuHo Wang 2019 
+                    Copyright &copy; YuHo Wang 2020 
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">

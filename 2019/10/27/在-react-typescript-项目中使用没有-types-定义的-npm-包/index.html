@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Hexo 博客接入 gitment 评论功能 - YuHo Blog | 小豪哥的博客
+          在 react+typescript 项目中使用没有 @types 定义的 npm 包 - YuHo Blog | 小豪哥的博客
         
     </title>
 
-    <link rel="canonical" href="https://wyh888.github.io/2018/06/12/Hexo-博客接入-gitment-评论功能/">
+    <link rel="canonical" href="https://wyh888.github.io/2019/10/27/在-react-typescript-项目中使用没有-types-定义的-npm-包/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,14 +90,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                              <a class="tag" href="/tags/#React" title="React">React</a>
+                            
+                              <a class="tag" href="/tags/#Typescript" title="Typescript">Typescript</a>
                             
                         </div>
-                        <h1>Hexo 博客接入 gitment 评论功能</h1>
-                        <h2 class="subheading">gitment 完整接入与采坑分享</h2>
+                        <h1>在 react+typescript 项目中使用没有 @types 定义的 npm 包</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by YuHo Wang on
-                            2018-06-12
+                            2019-10-27
                         </span>
                     </div>
                 
@@ -214,44 +216,17 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <blockquote>
-<p><a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment</a> is a comment system based on GitHub Issues, which can be used in the frontend without any server-side implementation.<br>
-Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>
-</blockquote>
-<h2><span id="注册-oauth-application">注册 OAuth Application</span></h2>
-<hr>
-<p>点击 <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">OAuth Application</a> 前往注册</p>
-<ul>
-<li>Application name：github 用户名或者 id</li>
-<li>Homepage URL: 个人博客的地址（如我的是 <a href="https://wyh888.github.io">https://wyh888.github.io</a>）</li>
-<li>Application description: 应用描述，可以随意填写</li>
-<li>Authorization callback URl: 回调地址，填授权后返回的地址，一般是个人博客地址（如我的是 <a href="https://wyh888.github.io">https://wyh888.github.io</a>），网上有些教程说是填写 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a>，亲测不行，接入后会报这个错 <strong>Error: Comments Not Initialized</strong>，初始化失败</li>
-</ul>
-<p>注册成功后会得到一个 <strong>client ID</strong> 和一个 <strong>client secret</strong>，用于之后的用户登录。</p>
-<h2><span id="接入-gitment">接入 Gitment</span></h2>
-<hr>
-<p>添加下列代码到页面中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"container"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span><br><span class="line">        id: <span class="string">'&lt;%= page.date %&gt;'</span>, <span class="comment">// 可选。默认为 location.href。这个id的作用，就是针对一个文章有唯一的标识来判断这篇本章。如果 id 太长会导致初始化失败，因此要让 id 保证在 50 个字符内，最好是使用 page.date</span></span><br><span class="line">        owner: <span class="string">''</span>, <span class="comment">// Github 用户名或是 Github ID</span></span><br><span class="line">        repo: <span class="string">''</span>, <span class="comment">// 存储评论的 repo，注意这里只要填写仓库名就可以了，如 blog-comment，而不是 https://github.com/wyh888/blog-comment</span></span><br><span class="line">        oauth: &#123;</span><br><span class="line">            client_id: <span class="string">''</span>, <span class="comment">// 上文注册得到的 client ID</span></span><br><span class="line">            client_secret: <span class="string">''</span>, <span class="comment">// 上文注册得到的 client secret</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    gitment.render(<span class="string">'container'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h2><span id="初始化评论">初始化评论</span></h2>
-<hr>
-<p>配置正确的文章，第一次显示时，会提示还没有初始化，需要文章作者登陆 Github 授权后，会出现初始化按钮，点击按钮后(注意，不要多点按钮，否则 issues 出现多条一样的)，评论功能正常初始化。</p>
-<p>关于自动初始化所有文章的功能，到本文编写时，还没有一个完善的解决方法，就是用脚本来执行自动化，有需要的可以详细了解：<a href="https://github.com/imsun/gitment/issues/5" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/5</a></p>
-<h2><span id="参考引用">参考引用</span></h2>
-<ul>
-<li><a href="https://www.jianshu.com/p/57afa4844aaa" target="_blank" rel="noopener">Gitment 评论功能接入踩坑教程</a></li>
-<li><a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="noopener">Gitment：使用 GitHub Issues 搭建评论系统</a></li>
-</ul>
-
+                
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/07/23/宽高等比布局/" data-toggle="tooltip" data-placement="top" title="宽高等比布局">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/2019/10/03/npm-语义化版本规范整理/" data-toggle="tooltip" data-placement="top" title="npm 语义化版本规范整理">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -280,7 +255,7 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">注册 OAuth Application</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">接入 Gitment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">初始化评论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考引用</span></a></li></ol>
+          <ol class="nav">none</ol>
         
         </div>
       </aside>
@@ -300,7 +275,9 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                          <a class="tag" href="/tags/#React" title="React">React</a>
+                        
+                          <a class="tag" href="/tags/#Typescript" title="Typescript">Typescript</a>
                         
                     </div>
                 </section>
