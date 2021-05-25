@@ -4,7 +4,7 @@
 
     <sitemap>
         <loc>https://wyh888.github.io/post-sitemap.xml</loc>
-        <lastmod>2019-10-22T06:54:12.552Z</lastmod>
+        <lastmod>2021-05-25T08:26:35.628Z</lastmod>
     </sitemap>
 
     <sitemap>
@@ -13,8 +13,13 @@
     </sitemap>
 
     <sitemap>
+        <loc>https://wyh888.github.io/category-sitemap.xml</loc>
+        <lastmod>2021-05-25T08:26:35.628Z</lastmod>
+    </sitemap>
+
+    <sitemap>
         <loc>https://wyh888.github.io/tag-sitemap.xml</loc>
-        <lastmod>2019-09-01T14:00:54.331Z</lastmod>
+        <lastmod>2021-05-25T08:26:35.628Z</lastmod>
     </sitemap>
 
 </sitemapindex>

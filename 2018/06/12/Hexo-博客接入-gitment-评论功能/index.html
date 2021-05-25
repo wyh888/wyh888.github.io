@@ -2,13 +2,13 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="YuHo Blog | 小豪哥的博客">
-    <meta name="keyword" content="YuHo Blog | 小豪哥的博客">
+    <meta name="keyword"  content="YuHo Blog | 小豪哥的博客">
     <link rel="shortcut icon" href="/img/avatar.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -21,21 +21,35 @@
     <link rel="canonical" href="https://wyh888.github.io/2018/06/12/Hexo-博客接入-gitment-评论功能/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
 
     <!-- Custom CSS --> 
-    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
     
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/css/highlight.css">
+    
+<link rel="stylesheet" href="/css/highlight.css">
 
-    <link rel="stylesheet" href="/css/widget.css">
 
-    <link rel="stylesheet" href="/css/rocket.css">
+    
+<link rel="stylesheet" href="/css/widget.css">
 
-    <link rel="stylesheet" href="/css/signature.css">
 
-    <link rel="stylesheet" href="/css/toc.css">
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -59,7 +73,7 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <!-- hack iOS CSS :active style -->
@@ -144,13 +158,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -159,6 +166,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -231,7 +245,7 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
 <h2><span id="接入-gitment">接入 Gitment</span></h2>
 <hr>
 <p>添加下列代码到页面中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"container"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span><br><span class="line">        id: <span class="string">'&lt;%= page.date %&gt;'</span>, <span class="comment">// 可选。默认为 location.href。这个id的作用，就是针对一个文章有唯一的标识来判断这篇本章。如果 id 太长会导致初始化失败，因此要让 id 保证在 50 个字符内，最好是使用 page.date</span></span><br><span class="line">        owner: <span class="string">''</span>, <span class="comment">// Github 用户名或是 Github ID</span></span><br><span class="line">        repo: <span class="string">''</span>, <span class="comment">// 存储评论的 repo，注意这里只要填写仓库名就可以了，如 blog-comment，而不是 https://github.com/wyh888/blog-comment</span></span><br><span class="line">        oauth: &#123;</span><br><span class="line">            client_id: <span class="string">''</span>, <span class="comment">// 上文注册得到的 client ID</span></span><br><span class="line">            client_secret: <span class="string">''</span>, <span class="comment">// 上文注册得到的 client secret</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    gitment.render(<span class="string">'container'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"container"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span><br><span class="line">        id: <span class="string">'&lt;%= page.date %&gt;'</span>, <span class="comment">// 可选。默认为 location.href。这个id的作用，就是针对一个文章有唯一的标识来判断这篇本章。如果 id 太长会导致初始化失败，因此要让 id 保证在 50 个字符内，最好是使用 page.date</span></span><br><span class="line">        owner: <span class="string">''</span>, <span class="comment">// Github 用户名或是 Github ID</span></span><br><span class="line">        repo: <span class="string">''</span>, <span class="comment">// 存储评论的 repo，注意这里只要填写仓库名就可以了，如 blog-comment，而不是 https://github.com/wyh888/blog-comment</span></span><br><span class="line">        oauth: &#123;</span><br><span class="line">            client_id: <span class="string">''</span>, <span class="comment">// 上文注册得到的 client ID</span></span><br><span class="line">            client_secret: <span class="string">''</span>, <span class="comment">// 上文注册得到的 client secret</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    gitment.render(<span class="string">'container'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <h2><span id="初始化评论">初始化评论</span></h2>
 <hr>
 <p>配置正确的文章，第一次显示时，会提示还没有初始化，需要文章作者登陆 Github 授权后，会出现初始化按钮，点击按钮后(注意，不要多点按钮，否则 issues 出现多条一样的)，评论功能正常初始化。</p>
@@ -268,23 +282,7 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
                 <!-- disqus comment end -->
 
                 <!-- gitment start -->
-                <!-- Comment -->
-<div id="git"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-        id: 'Tue Jun 12 2018 23:12:59 GMT+0800', // 可选。默认为 location.href
-        owner: 'wyh888',
-        repo: 'blog-comment',
-        oauth: {
-            client_id: '202f7c254dc47aead897',
-            client_secret: '7dfb1b196fd136254d562f336d17abaf2dfda6ed',
-        },
-    })
-    gitment.render('git')
-</script>
-
+                <!--  partial('_partial/comment') -->
                 <!-- gitment end -->
             </div>
             
@@ -296,7 +294,7 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">注册 OAuth Application</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">接入 Gitment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">初始化评论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考引用</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">注册 OAuth Application</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">接入 Gitment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">初始化评论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考引用</span></a></li></ol>
         
         </div>
       </aside>
@@ -421,13 +419,13 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; YuHo Wang 2019 
+                    Copyright &copy; YuHo Wang 2021 
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <i class="fa fa-heart"></i>
                     </span> 
-                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    re-Ported by <a href="http://beantech.org" target="_blank" rel="noopener">BeanTech</a> | 
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
@@ -440,13 +438,19 @@ Gitment 是一款基于 Github Issues 实现的评论系统，支持在前端直
 </footer>
 
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- Bootstrap Core JavaScript -->
+
 <script src="/js/bootstrap.min.js"></script>
 
+
 <!-- Custom Theme JavaScript -->
+
 <script src="/js/hux-blog.min.js"></script>
+
 
 
 <!-- async load function -->

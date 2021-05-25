@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="YuHo Blog | 小豪哥的博客">
+    <meta name="keyword"  content="YuHo Blog | 小豪哥的博客">
+    <link rel="shortcut icon" href="/img/avatar.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Graphql 从入门到真香 - YuHo Blog | 小豪哥的博客
+        
+    </title>
+
+    <link rel="canonical" href="https://wyh888.github.io/2020/08/12/Graphql-从入门到真香/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article/unknown.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/b1.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Graphql" title="Graphql">Graphql</a>
+                            
+                        </div>
+                        <h1>Graphql 从入门到真香</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by YuHo Wang on
+                            2020-08-12
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">YuHo Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="背景">背景</span></h1>
+<hr>
+<blockquote>
+<p>当谈起 API 设计时，人们首先会想到 REST API，它是 Representational State Transfer 的缩写。REST API 是标准化的工具，它通过 URL 的方式从服务器上获取数据。</p>
+</blockquote>
+<p>REST 架构的设计范式侧重于分配 HTTP 请求方法（GET、POST、PUT、PATCH、DELETE）和 URL 端点之间的关系。<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">RESTful API 设计指南<br>
+</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /api/v1/articles/</span><br><span class="line">GET /api/v1/article/:id/</span><br><span class="line">POST /api/v1/article/</span><br><span class="line">DELETE /api/v1/article/:id/</span><br><span class="line">PATCH /api/v1/article/:id/</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<h2><span id="rest-使用时的优缺点">Rest 使用时的优缺点</span></h2>
+<h3><span id="优点">优点</span></h3>
+<ul>
+<li>
+<p>统一的操作方法，能通过 HTTP 动词非常明确地看出当前是在执行什么操作，例如 POST 表示创建、PUT 表示更新、GET 表示获取资源、DELETE 表示删除资源。不用去自己定义语义化的 url 命名规范了。</p>
+</li>
+<li>
+<p>以资源为对象，能通过 url 一目了然地知道当前操作的对象。/articles 肯定在操作 article，/articles/123/comments 肯定是在操作 id 为 123 的 article 下面的 comments。</p>
+</li>
+<li>
+<p>基于传统 HTTP 协议，学习成本很低，兼容性很高。</p>
+</li>
+</ul>
+<h3><span id="不足之处">不足之处</span></h3>
+<p>在使用 REST 接口时，接口返回的数据格式、数据类型都是后端预先定义好的，如果返回的数据格式并不是调用者所期望的，作为前端的我们可以通过以下两种方式来解决问题：</p>
+<ul>
+<li><strong>和后端沟通，改接口（更改数据源）</strong></li>
+<li><strong>自己做一些适配工作（处理数据源）</strong></li>
+</ul>
+<p>一般如果是个人项目，改后端接口这种事情可以随意搞，但是如果是公司项目，改后端接口往往是一件比较敏感的事情，尤其是对于三端（web、andriod、ios）公用同一套后端接口的情况。大部分情况下，均是按第二种方式来解决问题的。</p>
+<p>因此如果接口的返回值，可以通过某种手段，从静态变为动态，即调用者来声明接口返回什么数据，很大程度上可以进一步解耦前后端的关联。</p>
+<p><strong>GraphQL 的诞生很大程度上是为了解决这些问题。</strong></p>
+<h1><span id="graphqlql-是什么">GraphqlQL 是什么</span></h1>
+<hr>
+<p><a href="https://graphql.cn/" target="_blank" rel="noopener">一种用于 API 的查询语言</a></p>
+<p><strong>官方定义</strong>：GraphQL 既是一种用于 API 的查询语言也是一个满足你数据查询的运行时。 GraphQL 对你的 API 中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获得它需要的数据，而且没有任何冗余，也让 API 更容易地随着时间推移而演进，还能用于构建强大的开发者工具。</p>
+<h2><span id="简单的-graphql-请求示例">简单的 graphql 请求示例</span></h2>
+<p>描述你的数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Project &#123;</span><br><span class="line">    name: <span class="built_in">String</span></span><br><span class="line">    tagline: <span class="built_in">String</span></span><br><span class="line">    contributors: [User]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求你所要的数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    project(name: <span class="string">"GraphQL"</span>) &#123;</span><br><span class="line">        tagline</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>得到可预测的结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"project"</span>: &#123;</span><br><span class="line">        <span class="string">"tagline"</span>: <span class="string">"A query language for APIs"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="graphql-核心组成部分">Graphql 核心组成部分</span></h2>
+<p><img src="http://conf.umlife.net/download/attachments/85520214/2.jpeg?version=2&amp;modificationDate=1608090530795&amp;api=v2" alt=""></p>
+<h3><span id="type">Type</span></h3>
+<ul>
+<li>
+<p>对于数据模型的抽象是通过 Type 来描述的，每一个 Type 有若干 Field 组成，每个 Field 又分别指向某个 Type。</p>
+</li>
+<li>
+<p>GraphQL 的 Type 简单可以分为两种，一种叫做 Scalar Type(标量类型)，另一种叫做 Object Type(对象类型)。</p>
+</li>
+</ul>
+<h4><span id="scalar-type">Scalar Type</span></h4>
+<ul>
+<li>
+<p>GraphQL 中内置有一些标量类型 String、Int、Float、Boolean、ID</p>
+</li>
+<li>
+<p>用户也可以定义自己的标量类型，如 Date</p>
+</li>
+<li>
+<p>标量是 GraphQL 类型系统中最小的颗粒</p>
+</li>
+<li>
+<p>枚举类型是一种特殊的标量</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type Article &#123;</span><br><span class="line">  id: ID!</span><br><span class="line">  title: <span class="built_in">String</span>!</span><br><span class="line">  text: <span class="built_in">String</span></span><br><span class="line">  isPublished: <span class="built_in">Boolean</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="object-type">Object Type</span></h4>
+<ul>
+<li>
+<p>仅有标量是不够抽象一些复杂的数据模型的，这时候我们需要使用对象类型</p>
+</li>
+<li>
+<p>我们通过对象模型来构建 GraphQL 中关于一个数据模型的形状，同时还可以声明各个模型之间的内在关联（一对多、一对一或多对多）。</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">type Article &#123;</span><br><span class="line">  id: ID!</span><br><span class="line">  title: <span class="built_in">String</span>!</span><br><span class="line">  text: <span class="built_in">String</span></span><br><span class="line">  isPublished: <span class="built_in">Boolean</span>!</span><br><span class="line">  author: User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type User &#123;</span><br><span class="line">  id: ID</span><br><span class="line">  name: <span class="built_in">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="type-modifier类型修饰符">Type Modifier（类型修饰符）</span></h4>
+<p>关于类型，还有一个较重要的概念，即类型修饰符，当前的类型修饰符有两种，分别是 List 和 Required，它们的语法分别为 [Type] 和 Type!, 同时这两者可以互相组合，比如 [Type]! 或者 [Type!] 或者 [Type!]!(请仔细看这里!的位置)，它们的含义分别为：</p>
+<ul>
+<li>[Type]! 列表本身为必填项，但其内部元素可以为空</li>
+<li>[Type!] 列表本身可以为空，但是其内部元素为必填</li>
+<li>[Type!]! 列表本身和内部元素均为必填</li>
+</ul>
+<h3><span id="schema">Schema</span></h3>
+<p>Schema 使用一个简单的强类型模式语法，称为模式描述语言（Schema Definition Language, SDL）。</p>
+<p>它定义了字段的类型、数据的结构，描述了接口获取数据的逻辑，当我们进行一些错误的查询的时候 GraphQL 引擎会负责告诉我们哪里有问题，和详细的错误信息，对开发调试十分友好。</p>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">  car(id: Int!): Car</span><br><span class="line">  cars(pageSize: Int): [Car!]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Car &#123;</span><br><span class="line">  id: ID!</span><br><span class="line">  color: <span class="built_in">String</span></span><br><span class="line">  speed: Speed!</span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Speed &#123;</span><br><span class="line">  min: Int</span><br><span class="line">  max: Int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="query">Query</span></h3>
+<p>在 GraphQL 中使用 Query 来抽象数据的查询逻辑。因此，我们可以将 Schema 理解为多个 Query 组成的一张表。<br>
+当前标准下，有三种查询类型，分别是</p>
+<ul>
+<li>query（查询）：当获取数据时，应当选取 query 类型，对应 CRUD 中的 R</li>
+<li>mutation（更改）：当尝试修改数据时，应当使用 mutation 类型，对应 CRUD 中的 CUD</li>
+<li>subscription（订阅）：当希望数据更改时，可以进行消息推送，使用 subscription 类型</li>
+</ul>
+<p>上面所提及的三种基本查询类型是作为 Root Query（根查询）存在的，对于传统的 CRUD 项目，我们只需要前两种类型就足够了。</p>
+<h4><span id="对比-rest-接口与-graphql-query">对比 Rest 接口与 Graphql Query</span></h4>
+<ul>
+<li>Rest 接口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /api/v1/articles/</span><br><span class="line">GET /api/v1/article/:id/</span><br><span class="line">POST /api/v1/article/</span><br><span class="line">DELETE /api/v1/article/:id/</span><br><span class="line">PATCH /api/v1/article/:id/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Graphql Query</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">query &#123;</span><br><span class="line">  articles(): [Article!]!</span><br><span class="line">  article(id: Int): Article!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mutation &#123;</span><br><span class="line">  createArticle(): Article!</span><br><span class="line">  updateArticle(id: Int): Article!</span><br><span class="line">  deleteArticle(id: Int): Article!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="小结">小结：</span></h4>
+<ul>
+<li>
+<p>GraphQL 中是按根查询的类型来划分 Query 职能的，同时还会明确的声明每个 Query 所返回的数据类型。</p>
+</li>
+<li>
+<p>需要注意的是，我们所声明的任何 Query 都必须是 Root Query 的子集，这和 GraphQL 内部的运行机制有关。</p>
+</li>
+</ul>
+<h3><span id="resolver前端如何发起请求">Resolver(前端如何发起请求)</span></h3>
+<p>如果我们仅仅在 Schema 中声明了若干 Query，那么我们只进行了一半的工作，因为我们并没有提供相关 Query 所返回数据的逻辑。为了能够使 GraphQL 正常工作，我们还需要再了解一个核心概念，Resolver（解析函数）。</p>
+<p>GraphQL 中，我们会有这样一个约定，Query 和与之对应的 Resolver 是同名的，这样在 GraphQL 才能把它们对应起来，举个例子，比如关于 articles(): [Article!]! 这个 Query, 它的 Resolver 的名字必然叫做 articles。</p>
+<h4><span id="graphql-执行机制">Graphql 执行机制</span></h4>
+<p><img src="https://cdn-images-1.medium.com/max/3568/1*_fQh0zWBlDG1OJ-FbMnWcw.png" alt=""></p>
+<p>我们可以发现，GraphQL 大体的解析流程就是遇到一个 Query 之后，尝试使用它的 Resolver 取值，之后再对返回值进行解析，这个过程是递归的，直到所解析 Field 的类型是 Scalar Type（标量类型）为止。解析的整个过程我们可以把它想象成一个很长的 Resolver Chain（解析链）。</p>
+<p>这里对于 GraphQL 的解析过程只是很简单的概括，其内部运行机制远比这个复杂，当然这些对于使用者是黑盒的，我们只需要大概了解它的过程即可。</p>
+<h4><span id="resolver-函数参数">Resolver 函数参数</span></h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">parent, args, ctx, info</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>parent： 上一级对象，如果字段属于根节点查询类型通常不会被使用。</li>
+<li>args： 传入某个 Query 中的参数（比如 user(id： ID!)： User 中的 id）</li>
+<li>ctx： 在 Resolver 解析链中不断传递的中间变量（类似 koa 中的 ctx 上下文）</li>
+<li>info： 一个保存与当前查询相关的字段特定信息以及 schema 详细信息的值</li>
+</ul>
+<p>值得注意的是，Resolver 内部实现对于 GraphQL 完全是黑盒状态。这意味着 Resolver 如何返回数据、返回什么样的数据、从哪返回数据，完全取决于 Resolver 本身。</p>
+<p>基于这一点，在实际中，很多人往往把 GraphQL 作为一个中间层来使用，数据的获取通过 Resolver 来封装，内部数据获取的实现可能基于 RPC、REST、WS、SQL 等多种不同的方式。</p>
+<h3><span id="graphql-基础知识总结">Graphql 基础知识总结</span></h3>
+<ul>
+<li>
+<p>Query 代表的是查询的统称，也就是一次查询可以称为一个 Query，而 query 是 Query 的一个类型种类，当前有三种类型，分别是 query（查询），mutation（变更），subscription（订阅）</p>
+</li>
+<li>
+<p>四者关系简单讲是这样的，Schema 由 Type 来描述，Query 的查询语法和格式受 Schema 约束，而 query,mutation,subscription 是 Query 的三种类型，分别对应不同的业务场景，Resolver 则是返回 Query 查询的数据</p>
+</li>
+</ul>
+<h3><span id="其他一些复杂应用">其他一些复杂应用</span></h3>
+<ul>
+<li>指令</li>
+<li>自定义标量</li>
+<li>别名</li>
+<li>片段</li>
+<li>联合类型</li>
+<li>输入类型</li>
+<li>…</li>
+</ul>
+<h1><span id="graphql-的实际应用">GraphQL 的实际应用</span></h1>
+<hr>
+<h2><span id="restful-like-模式">RESTful-Like 模式</span></h2>
+<p>这个模式就是简单粗暴的把 RESTful API 服务，替换成 GraphQL 实现。之前有多少 RESTful 服务，重构后就有多少 GraphQL 服务。它是一个简单的一对一关系。</p>
+<p>默认情况下，面向两个 GraphQL 服务发起的查询是两次请求，而不是一次。举个例子：</p>
+<p>前端需要产品数据时，从之前调用产品相关的 RESTful API，变成查询产品相关的 GraphQL。不过，需要订单相关的数据时，可能要查询另一个 GraphQL 服务。</p>
+<p>有一些公司拿 GraphQL 小试牛刀时，采取了这个做法；将 GraphQL 用在特定服务里。</p>
+<p>不过，这种模式难以发挥 GraphQL 合并请求和关联请求的能力。只是起到了按需查询，精确查询字段的作用，价值有限。</p>
+<p>因此，他们在实践后，发现收效甚微；认为 GraphQL 不过如此，还不如 RESTful API 架构简单和成熟。</p>
+<p>其实这是一种选型上的失误。</p>
+<h2><span id="graphql-as-an-api-gateway-模式">GraphQL as an API Gateway 模式</span></h2>
+<p>在这个模式里，GraphQL 接管了前端的一整块数据查询需求。</p>
+<p><img src="https://static001.infoq.cn/resource/image/e5/6c/e5d4995799a24799f8d45ee48ec5cf6c.png" alt=""></p>
+<p>前端不再直接调用具体的 RESTful 等接口，而是通过 GraphQL 去间接获取产品、订单、搜索等数据。</p>
+<p>在 GraphQL 这个中间层里，我们将各个微服务，按照它们的数据关联，整合成一个基于 GraphQL Schema 的数据关系网络。前端可以通过 GraphQL 查询语句，同时发起对多个微服务的数据的获取、筛选、裁剪等行为。</p>
+<p>值得一提的是，作为 API Gateway 的 GraphQL 服务，可以在其 Resolver 内，向前面提到的 RESTful-like 的 GraphQL 发起查询请求。</p>
+<p>如此，既避免了前端需要一对多的问题，也解决了 API Gateway GraphQL 需要请求 RESTful 全量数据接口的内部冗余问题。让服务到服务之间的数据调用，也可以做到更精确。</p>
+<p>GraphQL 服务是一个对数据消费方友好的模式。而数据消费方，既可以是前端，也可以是其它服务。</p>
+<p>当数据消费方是其它服务时，通过 GraphQL 查询语句，彼此之间可以更精确获取数据，避免冗余的数据传输和接口调用。</p>
+<p>当数据消费方是前端时，由于前端需要跟多个数据提供方打交道，如果每个数据提供方都是单独的 GraphQL，那并不能得到本质上的改善。此时若有一个 Gateway 角色的 GraphQL，可以真正减少前端调用的复杂度。</p>
+<p>同样是 API Gateway 角色的 GraphQL 服务，在实现方式上也有不同的分类。</p>
+<p>1）包含大量真实的数据操作和处理的 GraphQL</p>
+<p>2）转发数据请求，聚合数据结果的 GraphQL</p>
+<p>第一类，是传统意义上的后端服务；第二类，则是 GraphQL as BFF（Backend for Frontend）。</p>
+<p>这两类 GraphQL 服务的要求是不同的，前者可能包含大量 CPU 密集的计算，而后者总体而言主要是 Network I/O 相关的行为。</p>
+<p>并不提倡使用 Node.js 构建第一种服务，不管是构建 RESTful 还是 GraphQL。</p>
+<p><img src="https://static.geekbang.org/infoq/5c443c333b188.png" alt=""></p>
+<h2><span id="graphql-as-a-backend-framework">GraphQL as a Backend Framework</span></h2>
+<p>GraphQL 可以不作为 Server。</p>
+<p>这意味着，一个包含 GraphQL 实现的 Server，不一定通过 GraphQL 查询语句进行前后端数据交互，它可以继续沿用 RESTful API 风格。</p>
+<p>也就是说，我们可以把 GraphQL 当作一个服务端开发框架，然后在 RESTful 的各个接口里，发起 graphql 查询。</p>
+<p>不管是前端还是其它后端服务，都不必知道 GraphQL 的存在。前端的调用方式，还是 RESTful API，在 RESTful 服务内部，它自己向自己发起了 GraphQL 查询。</p>
+<p>那么，这个模式有什么好处跟价值？</p>
+<p>设想一下，你用 RESTful API 风格实现 BFF。由于 PC 端和移动端的场景不同，它们对同一份数据的消费方式差异很大。</p>
+<p>在 PC 端，它可以一次请求全量数据。</p>
+<p>在移动端，因为它屏幕小，它要分多次去请求数据。首屏一次，非首屏一次，滚动按需加载 N 次，多个 2 级页面里 M 次。</p>
+<p>我们要么实现一个超级接口，根据请求参数适配不同场景（即实现一个半吊子的 GraphQL）；要么实现多个功能相似，但又不同的 RESTful 接口。</p>
+<p>其中的差异太大了，所以很多公司索性就把 BFF 分成，PC-BFF 和 Mobile-BFF 两个 BFF 服务。</p>
+<p><img src="https://static001.infoq.cn/resource/image/db/72/dbbc82ae938a3e030900d5e29ff4ac72.png" alt=""></p>
+<p>我们可以把 PC-BFF 和 Mobile-BFF 整合成一个 GraphQL-BFF 服务。即便前后端不通过 GraphQL 查询语句进行交互，我们也可以在各个接口里，编写相对简单的查询语句，代替更高成本的接口实现。</p>
+<p>也即是说，使用 GraphQL 搭建 BFF，如果出现前后端分工、沟通等方面的矛盾。我们可以将 GraphQL 服务降级为 RESTful 服务，无非就是把需要前端编写的查询语句，写死在后端接口里面罢了。</p>
+<p>如果实现的是 RESTful 服务，要转换成 GraphQL 服务，就没有那么简单了。</p>
+<h1><span id="graphql-优缺点">Graphql 优缺点</span></h1>
+<hr>
+<h2><span id="优点">优点</span></h2>
+<ol>
+<li>
+<p><strong>与多系统和微服务能较好匹配。</strong><br>
+GraphQL 将多个系统集成到 API 中，从而形成了统一的 API 接口，并且能够将各个系统的复杂性隐藏在 API 背后。GraphQL 服务器的任务就是从当前这些系统中获取数据，并且将数据打包放入 GraphQL 返回的数据格式中。</p>
+</li>
+<li>
+<p><strong>通过单一的 API 调用获取信息</strong><br>
+如果使用 REST API，那么开发者需要把多个接入点合并起来才能收集到所有需要的数据，因为 REST 散落分布在多个独立的接入点上。<br>
+GraphQL 与 REST 的主要区别就在这里。开发者仅仅通过一个 API 调用就可以请求到所需信息，而 GraphQL 会专注于主体任务。</p>
+</li>
+<li>
+<p><strong>数据无冗余</strong><br>
+按需返回数据，在网络性能上确实有一定优化。</p>
+</li>
+<li>
+<p><strong>根据你的需求自定义请求格式</strong><br>
+开发者按照 REST API 文档描述发出请求时，只能请求一些特定的接入点、相关函数和参数等。<br>
+而另一方面，GraphQL 可以描述数据类型、字段以及它们之间的任何交互连接点。这就允许 GraphQL 开发者自定义请求格式来获取必要的信息。</p>
+</li>
+<li>
+<p><strong>文档化</strong>：GraphQL 的内省功能可以根据 Schema 生成实时更新的 API 文档，且没有维护成本，对于调用方直观且准确。</p>
+</li>
+<li>
+<p><strong>数据 Mock</strong>：服务端 Schema 中包含数据结构和类型，所以在此基础上实现一个 Mock 服务并不困难，apollo-server 就有实现，可以加快前端开发介入。</p>
+</li>
+<li>
+<p><strong>版本控制</strong>：客户端结构化的查询方式可以让服务追踪到字段的使用情况。且在增加字段时，根据结构化查询按需查询的特点，不会影响旧的调用（虽然 JavaScript 对多了个字段的事情不在意）。对于服务的迭代维护有一定便利。（如果接口是大改或是重构，这种情况是用不到 Graphql 的版本控制优势的）</p>
+</li>
+</ol>
+<h2><span id="缺点">缺点</span></h2>
+<ol>
+<li><a href="https://www.zhihu.com/question/38596306" target="_blank" rel="noopener">GraphQL 为何没有火起来</a></li>
+<li><strong>N + 1 问题</strong>（官方解决方案：<a href="https://www.jianshu.com/p/fbd1257116b0" target="_blank" rel="noopener">dataLoader</a>）</li>
+<li><strong>开发成本</strong>：毫无疑问 Resolver（业务行为）的开发在哪种服务模式下都不可缺少，而 Schema 的定义一定是额外的开发成本，且主观感受是 Schema 的开发过程还是比较耗费精力的，数据结构复杂的情况下更为如此。同时考虑到开发人员的能力差异，GraphQL 的使用也会是团队长期的人员成本。</li>
+<li><strong>调用合并</strong>：GraphQL 的理念就是将多个查询合并，对应服务端，通常只会提供一个合并后的“大”的接口，那么原本以 URL 为粒度的性能监控、请求追踪就会有问题，可能需要改为以 root field（根字段）为粒度。这也是需要额外考虑的。</li>
+</ol>
+<h1><span id="总结">总结</span></h1>
+<hr>
+<ul>
+<li>GraphQL 并不是要完全取代 REST，因为前者只是一个工具，而 REST 是一种架构模式。具体哪一个更合适，将取决于它们独特的交互场景，亦可以共存。</li>
+<li>综合来看，可用的 GraphQL 服务（不考虑拿 GraphQL 做本地数据管理的情况）的重心在服务提供方。作为 GraphQL 的调用方是很爽的，且几乎没有弊端。那么要不要使用 GraphQL 就要重点衡量服务端的成本收益了。</li>
+</ul>
+<p>最后：</p>
+<blockquote>
+<p>GraphQL exists because JavaScript developers finally realized HTTP API’s were too limiting so they reinvented SQL over JSON because JavaScript developers are obsessed with reinventing everything into JSON API’s。 ——@kellabyte</p>
+</blockquote>
+<blockquote>
+<p>GraphQL 的本质是程序员想对 JSON 使用 SQL。 —— 来自阮一峰的翻译</p>
+</blockquote>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/06/08/从-try-catch-学习-JS-Event-Loop/" data-toggle="tooltip" data-placement="top" title="从 try catch 学习 JS Event Loop">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                <!-- gitment start -->
+                <!--  partial('_partial/comment') -->
+                <!-- gitment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Rest 使用时的优缺点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">优点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">不足之处</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">GraphqlQL 是什么</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">简单的 graphql 请求示例</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Graphql 核心组成部分</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Type</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.1.1.</span> <span class="toc-nav-text">Scalar Type</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.1.2.</span> <span class="toc-nav-text">Object Type</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.1.3.</span> <span class="toc-nav-text">Type Modifier（类型修饰符）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Schema</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">Query</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.3.1.</span> <span class="toc-nav-text">对比 Rest 接口与 Graphql Query</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.3.2.</span> <span class="toc-nav-text">小结：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">Resolver(前端如何发起请求)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.4.1.</span> <span class="toc-nav-text">Graphql 执行机制</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.4.2.</span> <span class="toc-nav-text">Resolver 函数参数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.5.</span> <span class="toc-nav-text">Graphql 基础知识总结</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">2.2.6.</span> <span class="toc-nav-text">其他一些复杂应用</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">GraphQL 的实际应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">RESTful-Like 模式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">GraphQL as an API Gateway 模式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">GraphQL as a Backend Framework</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Graphql 优缺点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">优点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">缺点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Graphql" title="Graphql">Graphql</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+            
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/HarveyWYH">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/小豪哥WYH">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wyh888">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; YuHo Wang 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org" target="_blank" rel="noopener">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://wyh888.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://wyh888.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

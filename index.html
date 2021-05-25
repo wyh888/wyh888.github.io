@@ -2,13 +2,13 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="YuHo Blog | 小豪哥的博客">
-    <meta name="keyword" content="YuHo Blog | 小豪哥的博客">
+    <meta name="keyword"  content="YuHo Blog | 小豪哥的博客">
     <link rel="shortcut icon" href="/img/avatar.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -21,21 +21,35 @@
     <link rel="canonical" href="https://wyh888.github.io/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
 
     <!-- Custom CSS --> 
-    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
     
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/css/highlight.css">
+    
+<link rel="stylesheet" href="/css/highlight.css">
 
-    <link rel="stylesheet" href="/css/widget.css">
 
-    <link rel="stylesheet" href="/css/rocket.css">
+    
+<link rel="stylesheet" href="/css/widget.css">
 
-    <link rel="stylesheet" href="/css/signature.css">
 
-    <link rel="stylesheet" href="/css/toc.css">
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -59,7 +73,7 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <!-- hack iOS CSS :active style -->
@@ -136,13 +150,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -151,6 +158,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -210,6 +224,114 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2020/08/12/Graphql-从入门到真香/">
+        <h2 class="post-title">
+            
+            Graphql 从入门到真香
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            背景
+
+
+当谈起 API 设计时，人们首先会想到 REST API，它是 Representational State Transfer 的缩写。REST API 是标准化的工具，它通过 URL 的方式从服务器上获取数据。
+
+REST 架构的设计范式侧重于分配 HTTP 请求方法（GET、POST、PUT、PATCH、DELETE）和 URL 端点之间的关系。RESTful API 设计指南......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by YuHo Wang on
+            2020-08-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Graphql" title="Graphql">Graphql</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/06/08/从-try-catch-学习-JS-Event-Loop/">
+        <h2 class="post-title">
+            
+            从 try catch 学习 JS Event Loop
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            先看一道题
+以下代码输出什么？为什么会这样报错？
+12345try &#123;    (async function() &#123; a().b() &#125;)()&#125; catch (e) &#123;    console.log(`错误信息：$&#123;e.message&#125;`)&#125;
+3,
+2,
+1…
+揭晓答案：
+
+很明显，错误并没有被捕获，而是直接在控......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by YuHo Wang on
+            2020-06-08
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/03/17/解决图片加载-403-错误（防盗链）/">
+        <h2 class="post-title">
+            
+            解决图片加载 403 错误（防盗链）
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            问题
+html 中通过 img 标签引入图片地址，报 403 错误，而这张图片的地址单独复制出来在浏览器是能打开的。如下图：
+
+解决方案
+在页面 head 头部添加下面这行代码：
+12&lt;!-- 隐藏发送请求时请求头表示来源的 referrer 字段。 --&gt;&lt;meta name="referrer" content="no-referrer"&gt;
+原因
+
+http 请求......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by YuHo Wang on
+            2020-03-17
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#HTTP" title="HTTP">HTTP</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -287,10 +409,10 @@ dependencies 和 devDependencies 都指向一个对象。该对象的各个成�
         </h3>
         <div class="post-content-preview">
             http-server
-http-server是基于node.js的一个简单、零配置的命令行web服务器，用来做静态服务器非常方便。
+http-server 是基于 node.js 的一个简单、零配置的命令行web服务器，用来做静态服务器非常方便。
 相关介绍可参考：https://blog.csdn.net/ithanmang/article/details/88375259
 常规使用方法是在根目录下运行命令：
-1http-server &lt;path&gt; -a 127.0.0.1 -p &lt;端......
+1http-server &lt;path&gt; -a 127.0.0.1 -p &l......
         </div>
     </a>
     
@@ -453,129 +575,6 @@ Promise.all 方法接受一个数组作为参数，p1、p2、p3 都是 Promise �
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/04/10/使用-nrm-管理-npm-registry/">
-        <h2 class="post-title">
-            
-            使用 nrm 管理 npm registry
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            默认源
-在终端下运行以下命令可查看默认源，如果没有修改过的话，一般是 https://registry.npmjs.org/
-1npm config get registry
-npm 可以修改默认源地址，比如修改为我们常用的淘宝源：
-1npm config set registry https://registry.npm.taobao.org/
-但是如果有几个源要进行切换的话，这种方法就显......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by YuHo Wang on
-            2019-04-10
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Node" title="Node">Node</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/03/pm2-进程守护/">
-        <h2 class="post-title">
-            
-            pm2 进程守护
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            作用
-
-进程守护，系统崩溃自动重启
-启动多进程，充分利用 CPU 和内存
-自带日志记录功能
-
-PM2 介绍
-下载安装
-
-npm install pm2 -g
-检查是否安装完成与查看版本 pm2 --version
-
-基本使用
-常用命令
-12345678pm2 start ...pm2 listpm2 restart &lt;AppName&gt;/&lt;id&gt;pm2 stop &lt......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by YuHo Wang on
-            2019-04-03
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Node" title="Node">Node</a>
-            
-              <a href="/tags/#pm2" title="pm2">pm2</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/03/简单-Node-服务器部署/">
-        <h2 class="post-title">
-            
-            简单 Node 服务器部署
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-近期折腾了一个基于 node 的小说爬虫，并把爬虫部署到线上服务器，进行定时爬取，本文主要讲述如何部署线上的 node 服务器环境。
-
-生产环境所需要素
-一般来说，一个项目部署到线上并且对外访问，需要以下几个步骤
-
-购买域名
-购买服务器
-域名备案
-配置服务器应用环境
-安装配置数据库
-项目远程部署与更新
-
-本文针对第四步，记录如何配置 node 服务器应用环境。
-安装 nvm 与 node
-......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by YuHo Wang on
-            2019-04-03
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Node" title="Node">Node</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -614,7 +613,9 @@ npm install pm2 -g
             
         
             
-            <a href="/tags/#JavaScript" title="JavaScript" rel="3">JavaScript</a>
+        
+            
+            <a href="/tags/#JavaScript" title="JavaScript" rel="4">JavaScript</a>
             
         
             
@@ -643,6 +644,8 @@ npm install pm2 -g
         
             
         
+            
+        
     </div>
 </section>
 
@@ -658,7 +661,7 @@ npm install pm2 -g
         
 
         
-            <p>练习时长两年半的前端工程师、民谣爱好者、业余摄影爱好者</p>
+            <p>前端工程师、民谣爱好者、业余摄影爱好者</p>
         
 
         <!-- SNS Link -->
@@ -713,23 +716,23 @@ npm install pm2 -g
     <ul>
       
         <li>
-          <a href="/2019/10/03/npm-语义化版本规范整理/">npm 语义化版本规范整理</a>
+          <a href="/2020/08/12/Graphql-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%9C%9F%E9%A6%99/">Graphql 从入门到真香</a>
         </li>
       
         <li>
-          <a href="/2019/08/12/扩展-create-react-app-项目中的-webpack-配置/">扩展 create-react-app 项目中的 webpack 配置</a>
+          <a href="/2020/06/08/%E4%BB%8E-try-catch-%E5%AD%A6%E4%B9%A0-JS-Event-Loop/">从 try catch 学习 JS Event Loop</a>
         </li>
       
         <li>
-          <a href="/2019/07/10/pm2-启动-http-server-静态服务器/">pm2 启动 http-server 静态服务器</a>
+          <a href="/2020/03/17/%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD-403-%E9%94%99%E8%AF%AF%EF%BC%88%E9%98%B2%E7%9B%97%E9%93%BE%EF%BC%89/">解决图片加载 403 错误（防盗链）</a>
         </li>
       
         <li>
-          <a href="/2019/05/27/react-项目中引入图片的几种方式/">react 项目中引入图片的几种方式</a>
+          <a href="/2019/10/03/npm-%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E8%A7%84%E8%8C%83%E6%95%B4%E7%90%86/">npm 语义化版本规范整理</a>
         </li>
       
         <li>
-          <a href="/2019/05/22/element-ui-table-树型结构每次只展开一行-手风琴效果/">element-ui table 树型结构每次只展开一行</a>
+          <a href="/2019/08/12/%E6%89%A9%E5%B1%95-create-react-app-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84-webpack-%E9%85%8D%E7%BD%AE/">扩展 create-react-app 项目中的 webpack 配置</a>
         </li>
       
     </ul>
@@ -740,7 +743,7 @@ npm install pm2 -g
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
@@ -800,13 +803,13 @@ npm install pm2 -g
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; YuHo Wang 2019 
+                    Copyright &copy; YuHo Wang 2021 
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <i class="fa fa-heart"></i>
                     </span> 
-                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    re-Ported by <a href="http://beantech.org" target="_blank" rel="noopener">BeanTech</a> | 
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
@@ -819,13 +822,19 @@ npm install pm2 -g
 </footer>
 
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- Bootstrap Core JavaScript -->
+
 <script src="/js/bootstrap.min.js"></script>
 
+
 <!-- Custom Theme JavaScript -->
+
 <script src="/js/hux-blog.min.js"></script>
+
 
 
 <!-- async load function -->

@@ -2,13 +2,13 @@
 <html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="YuHo Blog | 小豪哥的博客">
-    <meta name="keyword" content="YuHo Blog | 小豪哥的博客">
+    <meta name="keyword"  content="YuHo Blog | 小豪哥的博客">
     <link rel="shortcut icon" href="/img/avatar.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -21,21 +21,35 @@
     <link rel="canonical" href="https://wyh888.github.io/2019/05/22/element-ui-table-树型结构每次只展开一行-手风琴效果/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
 
     <!-- Custom CSS --> 
-    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
     
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/css/highlight.css">
+    
+<link rel="stylesheet" href="/css/highlight.css">
 
-    <link rel="stylesheet" href="/css/widget.css">
 
-    <link rel="stylesheet" href="/css/rocket.css">
+    
+<link rel="stylesheet" href="/css/widget.css">
 
-    <link rel="stylesheet" href="/css/signature.css">
 
-    <link rel="stylesheet" href="/css/toc.css">
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -59,7 +73,7 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <!-- hack iOS CSS :active style -->
@@ -146,13 +160,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -161,6 +168,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -219,7 +233,7 @@
                 <p>最近做的项目需要用到表格展开下钻，产品要求每一行展开，其他行收起，类似手风琴效果。</p>
 <p><code>element-ui table</code> 并没有类似的功能，但是根据官方文档给出的 table 的一些 api，进行组合一下，还是能实现这个功能的。</p>
 <p>直接上代码了：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&lt;template&gt;</span></span><br><span class="line">  &lt;<span class="keyword">el</span>-table</span><br><span class="line">    :row-key=<span class="string">"getRowKeys"</span></span><br><span class="line">    :<span class="built_in">expand</span>-row-<span class="built_in">keys</span>=<span class="string">"expands"</span></span><br><span class="line">    :data=<span class="string">"tableData"</span></span><br><span class="line">    @expand-<span class="keyword">change</span>=<span class="string">"expandSelect"</span></span><br><span class="line">  &gt;</span><br><span class="line">    &lt;<span class="keyword">el</span>-table-column <span class="built_in">type</span>=<span class="string">"expand"</span> width=<span class="string">"100"</span>&gt;</span><br><span class="line">      <span class="symbol">&lt;template&gt;</span></span><br><span class="line">        <span class="symbol">&lt;div&gt;</span></span><br><span class="line">          折叠面板内容</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/<span class="keyword">el</span>-table-column&gt;</span><br><span class="line">    &lt;<span class="keyword">el</span>-table-column label=<span class="string">"列1"</span> prop=<span class="string">"a"</span> align=<span class="string">"left"</span> /&gt;</span><br><span class="line">    &lt;<span class="keyword">el</span>-table-column label=<span class="string">"列2"</span> prop=<span class="string">"b"</span> align=<span class="string">"left"</span> /&gt;</span><br><span class="line">  &lt;/<span class="keyword">el</span>-table&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="symbol">&lt;script&gt;</span></span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="built_in">expand</span><span class="variable">s:</span> [],</span><br><span class="line">      getRowKeys(row) &#123;</span><br><span class="line">        <span class="keyword">return</span> row.id</span><br><span class="line">      &#125;,</span><br><span class="line">      tableDat<span class="variable">a:</span> [</span><br><span class="line">        &#123;</span><br><span class="line">          id: <span class="number">1</span>,</span><br><span class="line">          <span class="variable">a:</span> <span class="string">'12'</span>,</span><br><span class="line">          <span class="variable">b:</span> <span class="string">'34'</span></span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          id: <span class="number">2</span>,</span><br><span class="line">          <span class="variable">a:</span> <span class="string">'22'</span>,</span><br><span class="line">          <span class="variable">b:</span> <span class="string">'44'</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  method<span class="variable">s:</span> &#123;</span><br><span class="line">    // 折叠面板每次只能展开一行</span><br><span class="line">    expandSelect(row, expandedRows) &#123;</span><br><span class="line">      var that = this</span><br><span class="line">      <span class="keyword">if</span> (expandedRows.length) &#123;</span><br><span class="line">        that.expands = []</span><br><span class="line">        <span class="keyword">if</span> (row) &#123;</span><br><span class="line">          that.expands.push(row.id)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        that.expands = []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">template</span>&gt;</span><br><span class="line">  &lt;el-<span class="keyword">table</span></span><br><span class="line">    :<span class="keyword">row</span>-key="getRowKeys"</span><br><span class="line">    :expand-<span class="keyword">row</span>-keys="expands"</span><br><span class="line">    :data="tableData"</span><br><span class="line">    @expand-change="expandSelect"</span><br><span class="line">  &gt;</span><br><span class="line">    &lt;el-<span class="keyword">table</span>-<span class="keyword">column</span> <span class="keyword">type</span>="expand" width="100"&gt;</span><br><span class="line">      &lt;<span class="keyword">template</span>&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          折叠面板内容</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/<span class="keyword">template</span>&gt;</span><br><span class="line">    &lt;/el-<span class="keyword">table</span>-<span class="keyword">column</span>&gt;</span><br><span class="line">    &lt;el-<span class="keyword">table</span>-<span class="keyword">column</span> label="列1" prop="a" align="left" /&gt;</span><br><span class="line">    &lt;el-<span class="keyword">table</span>-<span class="keyword">column</span> label="列2" prop="b" align="left" /&gt;</span><br><span class="line">  &lt;/el-<span class="keyword">table</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">template</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      expands: [],</span><br><span class="line">      getRowKeys(<span class="keyword">row</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">row</span>.id</span><br><span class="line">      &#125;,</span><br><span class="line">      tableData: [</span><br><span class="line">        &#123;</span><br><span class="line">          id: <span class="number">1</span>,</span><br><span class="line">          a: <span class="string">'12'</span>,</span><br><span class="line">          b: <span class="string">'34'</span></span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          id: <span class="number">2</span>,</span><br><span class="line">          a: <span class="string">'22'</span>,</span><br><span class="line">          b: <span class="string">'44'</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    // 折叠面板每次只能展开一行</span><br><span class="line">    expandSelect(<span class="keyword">row</span>, expandedRows) &#123;</span><br><span class="line">      var that = this</span><br><span class="line">      <span class="keyword">if</span> (expandedRows.length) &#123;</span><br><span class="line">        that.expands = []</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">row</span>) &#123;</span><br><span class="line">          that.expands.push(<span class="keyword">row</span>.id)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        that.expands = []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
@@ -250,23 +264,7 @@
                 <!-- disqus comment end -->
 
                 <!-- gitment start -->
-                <!-- Comment -->
-<div id="git"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-        id: 'Wed May 22 2019 17:22:12 GMT+0800', // 可选。默认为 location.href
-        owner: 'wyh888',
-        repo: 'blog-comment',
-        oauth: {
-            client_id: '202f7c254dc47aead897',
-            client_secret: '7dfb1b196fd136254d562f336d17abaf2dfda6ed',
-        },
-    })
-    gitment.render('git')
-</script>
-
+                <!--  partial('_partial/comment') -->
                 <!-- gitment end -->
             </div>
             
@@ -405,13 +403,13 @@
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; YuHo Wang 2019 
+                    Copyright &copy; YuHo Wang 2021 
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <i class="fa fa-heart"></i>
                     </span> 
-                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    re-Ported by <a href="http://beantech.org" target="_blank" rel="noopener">BeanTech</a> | 
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
@@ -424,13 +422,19 @@
 </footer>
 
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- Bootstrap Core JavaScript -->
+
 <script src="/js/bootstrap.min.js"></script>
 
+
 <!-- Custom Theme JavaScript -->
+
 <script src="/js/hux-blog.min.js"></script>
+
 
 
 <!-- async load function -->
